@@ -23,4 +23,4 @@ var VIDEO="assets/video/wedding.mp4";
    ⚠ ឯកសារនេះអ្នកណាក៏មើលឃើញបាន (View Source) បើដាក់ token ទីនេះ។
    ជម្រើសសុវត្ថិភាពជាង៖ ទុក token:"" ហើយដាក់តំណ Apps Script ក្នុង relay:"https://script.google.com/macros/s/.../exec"
 */
-window.TGCFG={token:"9004743774:AAGNvuWo_CyS7w-tIaRSqCS8f-rP4HrjS-w",chat:"77263013",relay:""};
+window.TGCFG={token:"9004743774:AAGNvuWo_CyS7w-tIaRSqCS8f-rP4HrjS-w",chat:"1146088911",relay:""};
