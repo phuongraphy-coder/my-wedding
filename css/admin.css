@@ -1,0 +1,45 @@
+/* =====================================================================
+   css/admin.css  —  រចនាបថទំព័រគ្រប់គ្រងភ្ញៀវ (admin.html)
+   ពណ៌មូលដ្ឋាន៖ :root{ --g (បៃតង) --r (ក្រហម) --au (មាស) }
+   ===================================================================== */
+:root{--g:#e9f2e8;--r:#d6002f;--ln:#e2e6e2;--au:#c48a5e}
+*{box-sizing:border-box}body{margin:0;background:var(--g);color:#333;font:15px 'Kantumruy Pro','Khmer OS',sans-serif}
+header{background:#9dd3f5;padding:14px 28px;font:700 30px Georgia,serif;color:#fff;text-shadow:2px 2px 3px #0003}
+main{max-width:640px;margin:0 auto;padding:20px 14px 40px}
+.tabs{display:inline-flex;gap:10px;padding:14px;background:#e4e5e8;border-radius:20px;box-shadow:0 6px 14px #0002}
+.tabs button{border:2px solid transparent;background:#fff;border-radius:12px;padding:10px 22px;font-family:inherit;font-weight:700;color:#555;cursor:pointer}
+.tabs .on{border-color:#2f6bff;color:var(--r);box-shadow:0 0 0 3px #fff}
+h2{font:20px Moul,serif;margin:0}.hide{display:none!important}
+.hd{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:24px 0 14px}.pill{display:inline-flex;align-items:center;gap:6px;color:#666;font-size:18px}
+.card{background:#fff;border-radius:26px;padding:16px;border:1px solid var(--ln)}
+.bar{display:flex;gap:10px;align-items:center}
+.sb{flex:1;display:flex;align-items:center;gap:10px;background:var(--g);border:1px solid var(--ln);border-radius:26px;padding:0 16px;min-width:0}
+.sb input{border:0;background:none;flex:1;padding:13px 0;font:inherit;outline:0;min-width:0}
+input,select,textarea{font:inherit;padding:11px 16px;border:1px solid var(--ln);border-radius:22px;background:var(--g);max-width:100%}textarea{border-radius:14px;width:100%}
+.ic{width:46px;height:46px;border-radius:50%;border:1px solid var(--ln);background:#fff;display:grid;place-items:center;cursor:pointer;color:#333;flex:none;font-size:22px;padding:0}
+.btn{border:1px solid var(--ln);background:#fff;border-radius:24px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer}.pri{background:var(--r);color:#fff;border-color:var(--r);white-space:nowrap}
+#fpn{margin-top:10px}#fpn select{width:100%}
+.gr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 2px;border-top:1px solid var(--ln);margin-top:14px}.gr+.gr{margin-top:0}
+.gn{font-weight:700;font-size:17px;word-break:break-word}.gs{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.st{padding:5px 14px;border-radius:14px;background:#e9e9ec;color:#555;font-size:13px}.st.ok{background:#e0f2e0;color:#2e7d32}.ga{display:flex;gap:8px;flex:none}
+.em{text-align:center;color:#999;padding:30px 10px}
+dialog{border:0;border-radius:22px;padding:24px;width:min(400px,92vw)}dialog input{width:100%;margin:5px 0 10px}label{font-weight:600;font-size:13px}
+dialog.fc{position:relative;border-radius:30px;padding:28px 22px 24px;width:min(430px,94vw);background:linear-gradient(180deg,#fff,#fdf3e8);box-shadow:0 20px 50px #0004;text-align:center}
+.x{position:absolute;top:14px;right:14px}.fc h3{font-size:20px;margin:8px 0 4px}.fc .nm{color:var(--au);margin-bottom:18px}
+.lk{display:flex;align-items:center;gap:8px;border:1px solid #efd9c3;border-radius:34px;padding:6px 6px 6px 16px;background:#fff}.lk input{border:0;background:none;flex:1;min-width:0;margin:0;padding:8px 0;color:#7a5a45}
+.gold{background:linear-gradient(180deg,#d9a97f,#b9805a);color:#fff;border:0;border-radius:28px;padding:13px 16px;font:inherit;font-weight:700;cursor:pointer;box-shadow:0 4px 10px #b9805a55;white-space:nowrap}
+.g3{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.g3 button{background:#fff;border:1px solid #efd9c3;border-radius:20px;padding:16px 4px;font:inherit;font-size:13px;color:#555;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px}
+.g3 i{width:42px;height:42px;border-radius:50%;background:#f8eadb;display:grid;place-items:center;color:var(--au);font-style:normal;font-size:20px}
+.mb{display:grid;gap:10px;margin-top:14px}.mb .btn{padding:13px}
+.tp{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px}.tc{position:relative;width:176px;background:#fff;padding:8px 8px 10px;box-shadow:0 2px 8px #0002}
+.tg{position:absolute;top:10px;left:10px;z-index:2;background:#f8c9dd;color:#8a1b4d;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px}
+.th{width:160px;height:235px;overflow:hidden;position:relative}.th iframe{width:390px;height:560px;border:0;transform:scale(.41);transform-origin:0 0;pointer-events:none}
+.tr{display:flex;justify-content:space-between;align-items:center;margin-top:6px}.tr .btn{padding:5px 12px;font-size:12px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:20px;display:none;z-index:99}
+.qn{font:700 22px Moul,serif;color:#c98f40;margin:8px 0 16px;word-break:break-word}
+.qf{position:relative;display:inline-block;padding:22px;background:#fff;border-radius:18px}.qf #qb{line-height:0}.qf img,.qf canvas{max-width:100%}
+.cn{position:absolute;width:30px;height:30px;border:3px solid #d49a5a}
+.cn.a{top:0;left:0;border-right:0;border-bottom:0;border-radius:12px 0 0 0}.cn.b{top:0;right:0;border-left:0;border-bottom:0;border-radius:0 12px 0 0}
+.cn.c{bottom:0;left:0;border-right:0;border-top:0;border-radius:0 0 0 12px}.cn.d{bottom:0;right:0;border-left:0;border-top:0;border-radius:0 0 12px 0}
+.qc{color:#a8896f;font-size:13px;margin-top:12px}

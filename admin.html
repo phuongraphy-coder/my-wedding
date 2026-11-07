@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>My Theab — គ្រប់គ្រងភ្ញៀវ</title>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;600;700&family=Moul&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<!--
+  admin.html  =  ទំព័រគ្រប់គ្រងភ្ញៀវ (សម្រាប់តែអ្នក)
+  បើកតាម៖ https://phuongraphy-coder.github.io/my-wedding/admin.html
+  បញ្ជីភ្ញៀវរក្សាទុកក្នុង browser របស់អ្នក (localStorage) — ប្រើ «នាំចេញទិន្នន័យ» ដើម្បីបម្រុងទុក
+  កែរចនាបថ → css/admin.css | កែមុខងារ → js/admin.js
+-->
+<body>
+<header>My Theab</header>
+<main>
+<div class="tabs"><button id="b0" class="on">ម៉ូតធៀប</button><button id="b1">បញ្ជីភ្ញៀវ</button></div>
+
+<section id="t0"><div class="hd"><h2>ម៉ូតធៀប</h2></div><div class="tp"><div class="tc"><span class="tg">Wedding</span><div class="th"><iframe id="thf" tabindex="-1" title="preview"></iframe></div><div class="tr" style="justify-content:center"><button class="btn" id="vw">◉ មើល</button></div></div></div></section>
+
+<section id="t1" class="hide"><div class="hd"><h2>ការគ្រប់គ្រងភ្ញៀវ</h2><span class="pill">👤 <span id="cnt">0</span></span><button class="ic" id="gs" title="ការកំណត់" style="width:36px;height:36px;font-size:16px">⚙</button></div>
+<div class="card"><div class="bar"><label class="sb">🔍<input id="q" placeholder="ស្វែងរក ..."></label><button class="ic" id="fb" title="ត្រង">⛛</button><button class="btn pri" id="add" style="padding:13px 20px">+ បន្ថែមថ្មី</button></div>
+<div id="fpn" class="hide"><select id="gf"></select></div><div id="ls"></div></div></section>
+</main>
+
+<dialog id="dlg"><div id="f"><h3 id="dt" style="margin-top:0">បន្ថែមភ្ញៀវ</h3><label>ឈ្មោះភ្ញៀវ (បង្ហាញលើសំបុត្រ)</label><input id="fn" required><label>ក្រុម (មិនបំពេញក៏បាន)</label><input id="fg" list="gl"><datalist id="gl"></datalist>
+<div style="text-align:right"><button type="button" class="btn" id="cn">បោះបង់</button> <button class="btn pri" id="sv" type="button">រក្សាទុក</button></div></div></dialog>
+
+<dialog class="fc" id="sd"><button class="ic x" type="button">✕</button><div style="color:var(--au)">— ➤ —</div><h3>តំណអញ្ជើញ</h3><div class="nm" id="sn"></div>
+<div class="lk"><span>🔗</span><input id="sl" readonly><button class="gold" id="cl">ចម្លងតែតំណរភ្ជាប់</button></div>
+<div class="g3"><button id="cm"><i>✉</i>ចម្លងទាំងសារ</button><button id="rs"><i>↺</i>កំណត់ឡើងវិញ</button></div></dialog>
+
+<dialog class="fc" id="qd"><button class="ic x" type="button">✕</button>
+<div style="color:#999;font-size:13px;margin-top:6px">សូមគោរពអញ្ជើញ</div><div class="qn" id="qn"></div>
+<div class="qf"><b class="cn a"></b><b class="cn b"></b><b class="cn c"></b><b class="cn d"></b><div id="qb"></div></div>
+<div class="qc">សូមស្កេន QR នេះ ដើម្បីបើកសំបុត្រអញ្ជើញ</div><div id="ql" class="hide"></div>
+<div style="display:flex;gap:10px;margin-top:16px"><button class="gold" id="qdw" type="button" style="flex:1">⤓ ទាញយក QR</button><button class="btn" id="qsh" type="button" style="flex:1;border-radius:28px">↗ ចែករំលែក</button></div>
+<div class="qc" style="margin-top:14px;font-size:11px">ផ្តល់ជូនដោយ My Theab</div></dialog>
+
+<dialog class="fc" id="md"><button class="ic x" type="button">✕</button><h3 id="mn"></h3><div class="mb"><button class="btn" id="me">✎ កែឈ្មោះ</button><button class="btn" id="mdl" style="color:var(--r)">🗑 លុប</button></div></dialog>
+
+<dialog id="ds"><h3 style="margin-top:0">កែព័ត៌មាន</h3>
+<label>តំណសំបុត្រ (បើទុកទទេ ប្រើតំណសំបុត្រ (index.html) ក្នុងថតដូចគ្នា)</label><input id="base" placeholder="https://phuongraphy-coder.github.io/my-wedding/">
+<label>សារផ្ញើ (ប្រើ {name} និង {link})</label><textarea id="msg" rows="4"></textarea>
+<p style="color:#777">ឧទាហរណ៍តំណ៖ <b id="ex" style="word-break:break-all"></b></p>
+<button class="btn" id="exp">នាំចេញទិន្នន័យ</button> <button class="btn" id="imp">នាំចូលទិន្នន័យ</button><input type="file" id="fi" accept=".json" class="hide">
+<div style="text-align:right;margin-top:14px"><button class="btn pri" id="ok">រួចរាល់</button></div></dialog>
+<dialog id="vd" style="width:100vw;max-width:100vw;height:100vh;max-height:100vh;padding:0;border-radius:0;background:#fff;overflow:hidden"><div id="vb" style="width:100%;height:100%"></div><button class="ic" id="vx" style="position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:5;width:40px;height:40px;font-size:18px;opacity:.85">✕</button></dialog>
+<dialog id="cf"><p id="cq" style="margin-top:0"></p><div style="text-align:right"><button class="btn" id="cno" type="button">បោះបង់</button> <button class="btn pri" id="cy" type="button">យល់ព្រម</button></div></dialog>
+<div id="toast"></div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

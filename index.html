@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>សិរីមង្គលអាពាហ៍ពិពាហ៍</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&family=Koulen&family=Moulpali&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/invitation.css">
+</head>
+<!--
+  index.html  =  សំបុត្រអញ្ជើញ (ទំព័រដែលភ្ញៀវបើក)
+  តំណសម្រាប់ភ្ញៀវ៖  https://phuongraphy-coder.github.io/my-wedding/?to=ឈ្មោះភ្ញៀវ
+
+  កន្លែងកែ (Where to edit):
+   • ឈ្មោះ ថ្ងៃ ទីតាំង រូបភាព Telegram → js/config.js
+   • ពណ៌ ពុម្ពអក្សរ                    → css/invitation.css
+   • អត្ថបទ/ការរៀបចំកម្មវិធី (របៀបវារៈ)  → ក្នុងឯកសារនេះ (រក id="agenda")
+   • តន្ត្រី                              → ប្តូរ src របស់ <audio id="bgm"> ខាងក្រោម
+   • វីដេអូ                              → assets/video/wedding.mp4 (ឬកែ VIDEO ក្នុង js/config.js)
+-->
+<body>
+<div id="bgfix"></div>
+<div id="cover"><div class="cv">
+<button class="lang" id="lang">🌐 ខ្មែរ</button>
+<div class="logow"><img class="logo" src="assets/images/logo.webp" alt="ភ ផ"><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i><i class="sp s4"></i><i class="sp s5"></i></div>
+<h1 class="moul">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
+<div class="pls">សូមគោរពអញ្ជើញ</div>
+<div class="guest" id="guest">ភ្ញៀវកិត្តិយស</div>
+<div class="ornw" aria-hidden="true"></div>
+<button class="btn" id="open">សូមចុចដើម្បីបើកសំបុត្រ</button>
+</div></div>
+
+<div id="app">
+<section id="home" class="rv">
+<h2 class="moul" style="font-size:22px">សិរីមង្គលអាពាហ៍ពិពាហ៍</h2><div class="div">— ◆ —</div>
+<div class="par"><div>លោក <b id="f1"></b><br>លោកស្រី <b id="m1"></b></div><div>លោក <b id="f2"></b><br>លោកស្រី <b id="m2"></b></div></div>
+<p class="inv">យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ</p><div class="div">— ◆ —</div>
+<p style="font-size:14px">ឯកឧត្តម លោកឧកញ៉ា អ្នកឧកញ៉ា ឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាង កញ្ញា អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធិពរជ័យសិរីសួស្តី ជ័យមង្គល ក្នុងពិធីអាពាហ៍ពិពាហ៍ របស់គូស្វាមីភរិយាថ្មី។</p>
+<div class="pol"><div class="ph a"></div><div class="ph b"></div>
+<div class="nm a"><small>កូនស្រីនាម</small><span id="bride"></span></div><div class="nm b"><small>កូនប្រុសនាម</small><span id="groom"></span></div></div>
+</section>
+
+<section id="date" class="rv"><h2 class="moul">សូមគោរពអញ្ជើញ</h2>
+<p style="font-size:14px;margin:0">ដោយក្តីរីករាយអស់ពីដួងចិត្ត យើងខ្ញុំសូមគោរពអញ្ជើញ លោកអ្នក មកចូលរួមជាសាក្សី និងអបអរសាទរក្តីស្នេហារបស់យើងខ្ញុំ។</p>
+<div class="cal"><div class="moul" style="color:var(--gold);margin-bottom:6px" id="calt"></div><div class="g" id="cal"></div></div>
+<p id="datetxt" class="inv"></p>
+<div class="hero"><img src="assets/images/couple-hero.jpg" alt="រូបគូស្វាមីភរិយា"><div class="ov"><h2 class="moul">ចំនួនថ្ងៃរាប់ថយក្រោយ</h2><div class="en">Event Countdown</div>
+<div class="cd"><div><b id="cd">0</b><span>ថ្ងៃ</span></div><div><b id="ch">0</b><span>ម៉ោង</span></div><div><b id="cm">0</b><span>នាទី</span></div><div><b id="cs">0</b><span>វិនាទី</span></div></div></div></div>
+<a class="btn" id="addcal" target="_blank" rel="noopener" style="margin-top:16px">📅 កក់ទុកក្នុងប្រតិទិនរបស់អ្នក</a>
+</section>
+
+<section id="place" class="rv"><h2 class="moul">ទីតាំងពិធី</h2><div class="div">— ◆ —</div>
+<p id="venue" style="font-size:14px"></p><div class="map"><div class="mfb"><span>📍</span><small id="mfbt">ចុចប៊ូតុងខាងក្រោម ដើម្បីបើកផែនទី</small></div><iframe id="mapf" title="Google Map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<div class="gb"><a class="btn" id="gmap" target="_blank" rel="noopener">មើលក្នុង Google Map</a></div>
+</section>
+
+<section id="agenda" class="rv"><h2 class="moul">របៀបវារៈកម្មវិធី</h2><div class="div">— ◆ —</div>
+<div class="day"><div class="dh moul">កម្មវិធីថ្ងៃទី១</div><div class="dd">ថ្ងៃសុក្រ ទី០១ ខែមករា ឆ្នាំ២០២៧</div><ul class="ag"><li><b>ម៉ោង ០៣:០០ នាទីល្ងាច</b><span>ពិធីសែនក្រុងពាលី</span></li><li><b>ម៉ោង ០៤:០០ នាទីល្ងាច</b><span>ពិធីសូត្រមន្តចម្រើនព្រះបរិត្ត</span></li><li><b>ម៉ោង ០៥:០០ នាទីល្ងាច</b><span>ពិធីជុំពេលា និង ជាវខាន់ស្លា</span></li><li><b>ម៉ោង ០៦:០០ នាទីល្ងាច</b><span>ពិសាអាហារពេលល្ងាច</span></li></ul></div>
+<div class="day"><div class="dh moul">កម្មវិធីថ្ងៃទី២</div><div class="dd">ថ្ងៃសៅរ៍ ទី០២ ខែមករា ឆ្នាំ២០២៧</div><ul class="ag"><li><b>ម៉ោង ០៦:៣០ នាទីព្រឹក</b><span>ជួបជុំបងប្អូន ញាតិមិត្ត ដើម្បីរៀបចំហែជំនូន</span></li><li><b>ម៉ោង ០៧:០០ នាទីព្រឹក</b><span>ពិធីហែជំនូនកំណត់ ចូលរោងជ័យ</span></li><li><b>ម៉ោង ០៧:៣០ នាទីព្រឹក</b><span>ពិធីនិយាយជើងការ សែនព្រេន ច្រៀងរៀបផ្លែឈើ និងពិសាអាហារពេលព្រឹក</span></li><li><b>ម៉ោង ០៨:៣០ នាទីព្រឹក</b><span>ពិធីកាត់សក់បង្កក់សិរី</span></li><li><b>ម៉ោង ០៩:៣០ នាទីថ្ងៃ</b><span>ពិធីសំពះផ្ទឹមចងដៃ បង្វិលពពិល ព្រះថោងតោងស្បៃ</span></li><li><b>ម៉ោង ១២:០០ នាទីថ្ងៃត្រង់</b><span>ពិសាអាហារថ្ងៃត្រង់</span></li><li><b>ម៉ោង ០៥:០០ នាទីល្ងាច</b><span>ទទួលបដិសណ្ឋារកិច្ចភ្ញៀវកិត្តិយស</span></li></ul></div>
+</section>
+
+<section id="photos" class="rv"><h2 class="moul">កម្រងរូបភាព</h2>
+<div class="gal" id="gal"><button class="arrow" style="left:0" id="gp">‹</button><button class="arrow" style="right:0" id="gn">›</button></div>
+<div id="gc" style="font-size:13px"></div><div class="gd"><i></i><b>◆</b><i></i></div></section>
+
+<section id="videos" class="rv"><h2 class="moul">កម្រងវីដេអូ</h2><div class="div">— ◆ —</div><div class="vbox" id="vbox"><!-- វីដេអូ៖ ប្តូរ poster (រូបគម្រប) នៅទីនេះ ហើយឯកសារវីដេអូនៅ js/config.js -->
+<video id="vid" playsinline preload="none" poster="assets/video/poster.jpg"></video><button class="vplay" id="vplay" aria-label="play"><i></i></button><div class="vbad" id="vbad"></div></div><div class="gd"><i></i><b>◆</b><i></i></div></section>
+
+<section id="thanks" class="rv"><h2 class="moul">សូមអរគុណ និងសូមអភ័យទោស</h2><p class="thx">យើងខ្ញុំសូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមាន និងការចូលរួមប្រសិទ្ធិពរជ័យ របស់ សម្តេច ឯកឧត្តម លោកជំទាវ លោក លោកស្រី អ្នកនាង កញ្ញា ក្នុងពិធីអាពាហ៍ពិពាហ៍របស់យើងខ្ញុំ។ យើងខ្ញុំសូមអភ័យទោស ដែលពុំបានជូនលិខិតអញ្ជើញដោយផ្ទាល់។</p><h3 class="moul khqrh">ចងដៃតាមរយៈ: <span>KHQR</span></h3><div class="qtabs pill"><button id="qu" class="on">USD</button><button id="qk">រៀល</button></div><div class="qcard"><img class="qr" id="qrk" alt="KHQR KHR" src="assets/images/khqr-khr.png"><img class="qr on" id="qru" alt="KHQR USD" src="assets/images/khqr-usd.png"></div><div class="gd"><i></i><b>◆</b><i></i></div></section>
+
+<section id="wish" class="rv wish"><h2 class="moul">សារជូនពរ</h2><div class="div">— ◆ —</div>
+<input id="wn" placeholder="ឈ្មោះរបស់អ្នក"><textarea id="wt" rows="3" placeholder="សរសេរពាក្យជូនពរ..."></textarea>
+<button class="btn" id="ws">ផ្ញើសារជូនពរ</button><div class="wl" id="wl"></div></section>
+
+<div class="end"></div>
+</div>
+
+
+<!-- តន្ត្រីផ្ទៃខាងក្រោយ៖ ប្តូរឯកសារនៅ src -->
+<audio id="bgm" src="assets/audio/music.m4a" loop preload="auto"></audio>
+<button id="mus" aria-label="music">🎵</button>
+<nav id="nav"><a href="#home" class="on">🏠</a><a href="#date">📅</a><a href="#place">📍</a><a href="#agenda">📋</a><a href="#photos">📷</a><a href="#videos">🎬</a><a href="#wish">💬</a></nav>
+<div id="lb" aria-hidden="true"><button id="lbc" aria-label="close">✕</button><button id="lbp" aria-label="prev">‹</button><img id="lbi" alt=""><button id="lbn" aria-label="next">›</button><div id="lbt"></div></div>
+
+<!-- ===== JavaScript (លំដាប់ត្រូវរក្សាទុកតាមនេះ) ===== -->
+<script src="js/config.js"></script>      <!-- ព័ត៌មានដែលអ្នកកែ -->
+<script src="js/invitation.js"></script>  <!-- មុខងារចម្បង: ប្រតិទិន រាប់ថយក្រោយ សារជូនពរ -->
+<script src="js/language.js"></script>    <!-- ប្តូរភាសា ខ្មែរ/English -->
+<script src="js/gallery.js"></script>     <!-- កម្រងរូបភាព (slide) -->
+<script src="js/petals.js"></script>      <!-- ផ្កាធ្លាក់ -->
+<script src="js/lightbox.js"></script>    <!-- មើលរូបធំ -->
+<script src="js/map.js"></script>         <!-- ផែនទី Google Map -->
+<script src="js/video.js"></script>       <!-- ចាក់វីដេអូ -->
+</body>
+</html>
